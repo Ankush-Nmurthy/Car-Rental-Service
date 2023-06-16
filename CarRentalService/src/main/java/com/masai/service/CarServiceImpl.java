@@ -12,10 +12,9 @@ import com.masai.exception.SomethingWentWrongException;
 public class CarServiceImpl implements ICarService {
 
 	@Override
-	public void addCar(CarCompany car) throws SomethingWentWrongException {
+	public void addCarAndCompanyBoth(CarCompany car) throws SomethingWentWrongException {
 		ICarsServiceDAO carService = new CarsServiceDaoImpl();
-		carService.addCar(car);
-		System.out.println(car);
+		carService.addCarAndCompanyBoth(car);
 	}
 
 	@Override
@@ -34,6 +33,12 @@ public class CarServiceImpl implements ICarService {
 	public Cars getCar() throws SomethingWentWrongException, NoRecordFoundException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void addOnlyCar(Cars car) throws SomethingWentWrongException {
+		ICarsServiceDAO carService = new CarsServiceDaoImpl();
+		carService.addOnlyCar(car);
 	}
 
 }

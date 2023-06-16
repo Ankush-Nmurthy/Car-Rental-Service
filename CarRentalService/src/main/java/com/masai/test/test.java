@@ -44,6 +44,6 @@ public class test {
 //			e.printStackTrace();
 //		}
 		
-		AdminUI.getCarCompany("mahindra");
+//		AdminUI.SearchIfCarIsPresent("mahindra");
 	}
 }
