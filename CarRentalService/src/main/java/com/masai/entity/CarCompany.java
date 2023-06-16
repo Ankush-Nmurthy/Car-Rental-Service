@@ -4,7 +4,9 @@ import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,14 +18,14 @@ public class CarCompany { // inversing side / reference
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@Column(unique = true)
 	private String companyName;
 
-	@OneToMany(mappedBy = "carCompany", cascade = CascadeType.ALL) // always contain the owing side variable
+	@OneToMany(mappedBy = "carCompany", cascade = CascadeType.ALL ,fetch = FetchType.EAGER) // always contain the owing side variable
 	private Set<Cars> cars;
 
 	public CarCompany() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public CarCompany(String companyName, Set<Cars> cars) {
@@ -68,6 +70,10 @@ public class CarCompany { // inversing side / reference
 		CarCompany other = (CarCompany) obj;
 		return Objects.equals(cars, other.cars) && Objects.equals(companyName, other.companyName) && id == other.id;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "CarCompany [id=" + id + ", companyName=" + companyName + ", cars=" + cars + "]";
+	}
 
 }

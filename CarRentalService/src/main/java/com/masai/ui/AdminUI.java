@@ -7,31 +7,43 @@ import java.util.Scanner;
 import com.masai.dao.EMUtilities;
 import com.masai.entity.CarCompany;
 import com.masai.entity.Cars;
-import com.masai.exception.SomethingWentWrongException;
-import com.masai.service.CarServiceImpl;
-import com.masai.service.ICarService;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.Query;
 
 public final class AdminUI {
-	
-	public static void getCarCompany(String name) {
-		try(EntityManager em = EMUtilities.getEntityManager()){
-			String selectQuery = "Select c from CarCompany c where c.companyName is ";
+
+	public static List<CarCompany> SearchIfCarIsPresent(String name) {
+		try (EntityManager em = EMUtilities.getEntityManager()) {
+			String selectQuery = "SELECT c FROM CarCompany c WHERE c.companyName = :na";
 			Query query = em.createQuery(selectQuery);
 			query.setParameter("na", name);
-			List<CarCompany> cc = (List<CarCompany>)query.getResultList();
-			System.out.println(cc);
-//			return cc;
-		}
-		catch(IllegalArgumentException | PersistenceException p) {
+			List<CarCompany> a = (List<CarCompany>) query.getResultList();
+			if (!a.isEmpty()) {
+				return a;
+			}
+		} catch (IllegalArgumentException | PersistenceException p) {
 			System.out.println(p.getMessage());
 		}
-//		return null;
+		return null;
 	}
-	
+
+	public static CarCompany getCarCompany(String name) {
+		List<CarCompany> a = null;
+		try (EntityManager em = EMUtilities.getEntityManager()) {
+			String selectQuery = "SELECT c FROM CarCompany c WHERE c.companyName = :na";
+			Query query = em.createQuery(selectQuery);
+			query.setParameter("na", name);
+			a = (List<CarCompany>) query.getResultList();
+			if (!a.isEmpty()) {
+				return a.get(0);
+			}
+		} catch (IllegalArgumentException | PersistenceException p) {
+			System.out.println(p.getMessage());
+		}
+		return null;
+	}
+
 	public static void addCar(Scanner sc) {
 		System.out.print("Enter Brand or Company name of Car : ");
 		String brand = sc.next();
@@ -44,22 +56,13 @@ public final class AdminUI {
 		System.out.print("Enter the avialbility of car (true / false) : ");
 		boolean availability = sc.nextBoolean();
 
-		CarCompany cc = new CarCompany(brand, new HashSet<>());
-		
+		CarCompany cc = new CarCompany(brand, null);
 		Cars car = new Cars(model, year, mileage, availability, null);
-		car.setCarCompany(cc);
-		cc.getCars().add(car);
 		
-		ICarService carservice = new CarServiceImpl();
-		try {
-			carservice.addCar(cc);
-			System.out.println("car added successfully..");
-		} catch (SomethingWentWrongException e) {
-			System.out.println(e.getMessage());
-		}
+
 	}
-	
+
 	public static void updateCar(Scanner sc) {
-		
+
 	}
 }

@@ -8,8 +8,9 @@ import com.masai.exception.NoRecordFoundException;
 import com.masai.exception.SomethingWentWrongException;
 
 public interface ICarService {
-	void addCar(CarCompany car) throws SomethingWentWrongException;
+	void addCarAndCompanyBoth(CarCompany car) throws SomethingWentWrongException;
 	void updateCar() throws SomethingWentWrongException , NoRecordFoundException; 
 	List<Cars> getCarList() throws SomethingWentWrongException, NoRecordFoundException;
 	Cars getCar() throws SomethingWentWrongException, NoRecordFoundException;
+	void addOnlyCar(Cars car) throws SomethingWentWrongException;
 }
