@@ -21,7 +21,7 @@ public class CarCompany { // inversing side / reference
 	@Column(unique = true)
 	private String companyName;
 
-	@OneToMany(mappedBy = "carCompany", cascade = CascadeType.ALL ,fetch = FetchType.EAGER) // always contain the owing side variable
+	@OneToMany(mappedBy = "carCompany", cascade = CascadeType.ALL) // always contain the owing side variable
 	private Set<Cars> cars;
 
 	public CarCompany() {

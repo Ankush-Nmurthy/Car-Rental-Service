@@ -1,6 +1,11 @@
 package com.masai.test;
 
-import com.masai.entity.CarCompany;
+import java.util.Scanner;
+
+import com.masai.dao.CarsServiceDaoImpl;
+import com.masai.entity.Cars;
+import com.masai.exception.NoRecordFoundException;
+import com.masai.exception.SomethingWentWrongException;
 import com.masai.ui.AdminUI;
 
 import jakarta.persistence.EntityManagerFactory;
@@ -36,7 +41,7 @@ public class test {
 	public static void main(String[] args) {
 ////		cars();
 //		Cars car = new Cars("toyota", "innove", 2015, 18, true);
-//		CarsServiceDaoImpl csr = new CarsServiceDaoImpl();
+		CarsServiceDaoImpl csr = new CarsServiceDaoImpl();
 //		try {
 //			csr.addCar(car);
 //		} catch (SomethingWentWrongException e) {
@@ -45,5 +50,42 @@ public class test {
 //		}
 		
 //		AdminUI.SearchIfCarIsPresent("mahindra");
+		
+		Scanner sc = new Scanner(System.in);
+		AdminUI ai = new AdminUI();
+//		ai.addCompany(sc);
+		
+//		ai.addCar(sc);
+		ai.viewAllCars();
+//		CarCompany cc = ai.getCarCompany("mahindra");
+//		System.out.println(cc);
+		
+//		---------------
+//		try {
+//			Cars car= csr.getCar(2);
+//			System.out.println(car);
+//		} catch (SomethingWentWrongException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (NoRecordFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+//		---------------------
+//		try {
+//			csr.deleteCar(3);
+//		} catch (SomethingWentWrongException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (NoRecordFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		ai.viewAllCars();
+		
+		
+//		----------------------
+		AdminUI.viewSingleCar(sc);
 	}
 }
