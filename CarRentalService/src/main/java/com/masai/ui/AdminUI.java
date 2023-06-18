@@ -77,14 +77,18 @@ public final class AdminUI {
 		double amount = sc.nextDouble();
 		System.out.print("Enter the avialbility of car (true / false) : ");
 		boolean availability = sc.nextBoolean();
-
+		System.out.print("Enter the location were the car is available : ");
+		String location = sc.next();
+		System.out.print("Enter the seating capacity of car : ");
+		int seatingCapacity = sc.nextInt();
 //		if Carcompany present in data base add only car-->
 		if (getCarCompany(brand) != null) {
 			try {
 				ICarService ics = new CarServiceImpl();
 //				ICarsServiceDAO ics = new CarsServiceDaoImpl();
 				CarCompany cc = getCarCompany(brand);
-				Cars car = new Cars(model, year, mileage, availability, amount, cc);
+				Cars car = new Cars(model, year, mileage, availability, amount, location,cc);
+				car.setSeatingcapacity(seatingCapacity); // added seating capacity explicitly.
 				ics.addOnlyCar(car);
 				System.out.println("Car added successfully...");
 			} catch (SomethingWentWrongException p) {
@@ -97,7 +101,8 @@ public final class AdminUI {
 				ICarService ics = new CarServiceImpl();
 				ics.addCompany(new CarCompany(brand, new HashSet<>()));
 				CarCompany cc = getCarCompany(brand);
-				Cars car = new Cars(model, year, mileage, availability, amount, cc);
+				Cars car = new Cars(model, year, mileage, availability, amount,location ,cc);
+				car.setSeatingcapacity(seatingCapacity); // added seating capacity explicitly.
 				ics.addOnlyCar(car);
 				System.out.println("Car added successfully...");
 			} catch (SomethingWentWrongException p) {
@@ -122,10 +127,15 @@ public final class AdminUI {
 		double amount = sc.nextDouble();
 		System.out.print("Enter the avialbility of car (true / false) : ");
 		boolean availability = sc.nextBoolean();
-
+		System.out.print("Enter the location were the car is available : ");
+		String location = sc.next();
+		System.out.print("Enter the seating capacity of car : ");
+		int seatingCapacity = sc.nextInt();
+		
 		try {
 			CarCompany cc = getCarCompany(brand);
-			Cars car = new Cars(model, year, mileage, availability, amount, null);
+			Cars car = new Cars(model, year, mileage, availability, amount,location,null);
+			car.setSeatingcapacity(seatingCapacity); // added seating capacity explicitly.
 			car.setCarId(id);
 			ICarService ics = new CarServiceImpl();
 			ics.updateCar(car);

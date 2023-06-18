@@ -8,7 +8,7 @@ import com.masai.exception.SomethingWentWrongException;
 
 public interface ICustomerService {
 	void addCustomer(Customer customer) throws SomethingWentWrongException;
-	void login(String username, String password) throws SomethingWentWrongException;
+	void login(String username, String password) throws SomethingWentWrongException,NoRecordFoundException;
 	void changePassword(String oldPassword, String newPassword) throws SomethingWentWrongException;
 	void deleteAccount() throws SomethingWentWrongException;
 	List<Object[]> getCustomerList() throws SomethingWentWrongException, NoRecordFoundException;

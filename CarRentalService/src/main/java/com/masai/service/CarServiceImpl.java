@@ -31,9 +31,9 @@ public class CarServiceImpl implements ICarService {
 	}
 
 	@Override
-	public Cars getCar() throws SomethingWentWrongException, NoRecordFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public Cars getCar(int id) throws SomethingWentWrongException, NoRecordFoundException {
+		ICarsServiceDAO carService = new CarsServiceDaoImpl();
+		return carService.getCar(id);
 	}
 
 	@Override

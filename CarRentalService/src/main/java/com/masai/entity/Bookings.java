@@ -25,7 +25,7 @@ public class Bookings {
 	@JoinColumn(name = "Car_id", nullable = false)
 	private Cars car;
 
-	@Column(name = "location" , nullable = false)
+	@Column(name = "location", nullable = false)
 	private String location;
 
 	@Column(name = "Start_date", nullable = false)
@@ -107,11 +107,11 @@ public class Bookings {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Bookings [id=" + id + ", customer=" + customer + ", car=" + car + ", location=" + location
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status + "]";
 	}
-	
+
 }

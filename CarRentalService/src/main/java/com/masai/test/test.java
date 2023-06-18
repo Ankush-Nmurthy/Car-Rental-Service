@@ -3,10 +3,8 @@ package com.masai.test;
 import java.util.Scanner;
 
 import com.masai.dao.CarsServiceDaoImpl;
-import com.masai.entity.Cars;
-import com.masai.exception.NoRecordFoundException;
-import com.masai.exception.SomethingWentWrongException;
 import com.masai.ui.AdminUI;
+import com.masai.ui.CustomerUI;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -56,7 +54,7 @@ public class test {
 //		ai.addCompany(sc);
 		
 //		ai.addCar(sc);
-		ai.viewAllCars();
+//		ai.viewAllCars();
 //		CarCompany cc = ai.getCarCompany("mahindra");
 //		System.out.println(cc);
 		
@@ -86,6 +84,18 @@ public class test {
 		
 		
 //		----------------------
-		AdminUI.viewSingleCar(sc);
+//		AdminUI.viewSingleCar(sc);
+		
+//		-------------------------
+		
+//		CustomerUI.searchCar(sc);
+//		--------------------
+//		System.out.println(CustomerUI.getCarList("mahindra"));
+		
+//		============================
+//		CustomerUI.searchByBrand(sc);
+//		===============================
+		CustomerUI.SearchByLocation(sc);
+		
 	}
 }

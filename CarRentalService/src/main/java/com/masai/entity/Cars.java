@@ -30,6 +30,10 @@ public class Cars { // owing side
 	
 	private double amount;
 	
+	private int seatingcapacity;
+	
+	private String Location;
+	
 	private boolean availability;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -40,7 +44,7 @@ public class Cars { // owing side
 		super();
 	}
 
-	public Cars(String model, int year, int mileage, boolean availability, double amount,CarCompany carCompany) {
+	public Cars(String model, int year, int mileage, boolean availability, double amount,String location,CarCompany carCompany) {
 		super();
 		this.model = model;
 		this.year = year;
@@ -48,6 +52,7 @@ public class Cars { // owing side
 		this.availability = availability;
 		this.amount = amount;
 		this.carCompany = carCompany;
+		this.Location = location;
 	}
 	
 	public void setCarId(int id) {
@@ -126,8 +131,24 @@ public class Cars { // owing side
 
 	@Override
 	public String toString() {
-		return "Cars [carId=" + carId + ", model=" + model + ", year=" + year + ", mileage=" + mileage
-				+ ", availability=" + availability + "]";
+		return "Cars [carId : " + carId + ", model : " + model + ", year : " + year + ", mileage : " + mileage
+				+ ", availability : " + availability + ", Available-location : "+ Location+"]";
+	}
+
+	public String getLocation() {
+		return Location;
+	}
+
+	public void setLocation(String location) {
+		Location = location;
+	}
+
+	public int getSeatingcapacity() {
+		return seatingcapacity;
+	}
+
+	public void setSeatingcapacity(int seatingcapacity) {
+		this.seatingcapacity = seatingcapacity;
 	}
 
 }
