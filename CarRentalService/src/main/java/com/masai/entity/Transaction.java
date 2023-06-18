@@ -23,7 +23,6 @@ public class Transaction {
 
 	public Transaction() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Transaction(LocalDateTime transactiondata, double totalAmount, Bookings bookings) {

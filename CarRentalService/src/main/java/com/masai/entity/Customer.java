@@ -18,15 +18,17 @@ public class Customer {
 
 	@Column(nullable = false)
 	private String name;
-	
+
 	@Column(nullable = false, unique = true)
 	private String username;
-	
+
 	@Column(nullable = false, length = 50)
 	private String password;
-	
+
 	private int age;
-	
+
+	private String location;
+
 	@Column(nullable = false)
 	private int isDeleted;
 
@@ -38,13 +40,14 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String name, String username, String password, int age, int isDeleted) {
+	public Customer(String name, String username, String password, int age, String location, Set<Bookings> bookingset) {
 		super();
 		this.name = name;
 		this.username = username;
 		this.password = password;
 		this.age = age;
-		this.isDeleted = isDeleted;
+		this.setLocation(location);
+		this.bookingset = bookingset;
 	}
 
 	public int getId() {
@@ -93,6 +96,14 @@ public class Customer {
 
 	public void setIsDeleted(int isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 }

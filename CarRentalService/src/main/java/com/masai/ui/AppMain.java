@@ -85,10 +85,10 @@ public class AppMain {
 				adminLogin(sc);
 				break;
 			case 2:
-//				customerLogin();
+				CustomerUI.userLogin(sc);
 				break;
 			case 3:
-//				customerRegistration();
+				CustomerUI.customerRegistration(sc);
 				break;
 			case 0:
 				System.out.println("Exited from app successfully, \n Thanks for using our services...");
