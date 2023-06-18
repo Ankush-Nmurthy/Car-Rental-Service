@@ -26,16 +26,16 @@ public class AppMain {
 				AdminUI.addCar(sc);
 				break;
 			case 2:
-//				viewAllCars(sc);
+				AdminUI.viewAllCars();
 				break;
 			case 3:
 				AdminUI.updateCar(sc);
 				break;
 			case 4:
-//				deleteCar(sc);
+				AdminUI.deleteCar(sc);
 				break;
 			case 5:
-//				viewSingleCar(sc);
+				AdminUI.viewSingleCar(sc);
 				break;
 			case 6:
 //				generateReport(sc);

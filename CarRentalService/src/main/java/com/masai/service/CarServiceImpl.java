@@ -18,15 +18,16 @@ public class CarServiceImpl implements ICarService {
 	}
 
 	@Override
-	public void updateCar() throws SomethingWentWrongException, NoRecordFoundException {
-		// TODO Auto-generated method stub
-
+	public void updateCar(Cars car) throws SomethingWentWrongException, NoRecordFoundException {
+		ICarsServiceDAO carService = new CarsServiceDaoImpl();
+		carService.updateCar(car);
 	}
 
 	@Override
-	public List<Cars> getCarList() throws SomethingWentWrongException, NoRecordFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Object[]> getCarList() throws SomethingWentWrongException, NoRecordFoundException {
+		ICarsServiceDAO carService = new CarsServiceDaoImpl();
+		List<Object[]> carlist = carService.getCarList();
+		return carlist;
 	}
 
 	@Override
@@ -41,4 +42,22 @@ public class CarServiceImpl implements ICarService {
 		carService.addOnlyCar(car);
 	}
 
+	@Override
+	public void addCompany(CarCompany cc) throws SomethingWentWrongException {
+		ICarsServiceDAO carService = new CarsServiceDaoImpl();
+		carService.addCompany(cc);
+	}
+
+	@Override
+	public CarCompany getCarCompany(String name) throws SomethingWentWrongException, NoRecordFoundException {
+		ICarsServiceDAO carService = new CarsServiceDaoImpl();
+		return carService.getCarCompany(name);
+	}
+
+	@Override
+	public void deleteCar(int id) throws SomethingWentWrongException, NoRecordFoundException {
+		ICarsServiceDAO carService = new CarsServiceDaoImpl();
+		carService.deleteCar(id);
+	}
+	
 }

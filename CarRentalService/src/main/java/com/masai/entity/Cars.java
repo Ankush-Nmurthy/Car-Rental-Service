@@ -17,10 +17,9 @@ import jakarta.persistence.Table;
 public class Cars { // owing side
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int carId;
-
+	private int carId; 
+//carID, model, year, mileage, availability carCompany = c
 //	private String brand;
-
 	@Column(name = "car_model", nullable = false)
 	private String model;
 
@@ -28,26 +27,33 @@ public class Cars { // owing side
 	private int year;
 
 	private int mileage;
-
+	
+	private double amount;
+	
 	private boolean availability;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "car_company_id")
+	@JoinColumn(name = "car_company_id", nullable = false)
 	private CarCompany carCompany;
 
 	public Cars() {
 		super();
 	}
 
-	public Cars(String model, int year, int mileage, boolean availability, CarCompany carCompany) {
+	public Cars(String model, int year, int mileage, boolean availability, double amount,CarCompany carCompany) {
 		super();
 		this.model = model;
 		this.year = year;
 		this.mileage = mileage;
 		this.availability = availability;
+		this.amount = amount;
 		this.carCompany = carCompany;
 	}
-
+	
+	public void setCarId(int id) {
+		this.carId = id;
+	}
+	
 	public int getCarId() {
 		return carId;
 	}
@@ -82,6 +88,14 @@ public class Cars { // owing side
 
 	public void setAvailability(boolean availability) {
 		this.availability = availability;
+	}
+	
+	public void setAmount(int id) {
+		this.amount = id;
+	}
+	
+	public double getAmount() {
+		return amount;
 	}
 
 	public CarCompany getCarCompany() {
