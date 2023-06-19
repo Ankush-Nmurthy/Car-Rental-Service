@@ -59,5 +59,11 @@ public class CarServiceImpl implements ICarService {
 		ICarsServiceDAO carService = new CarsServiceDaoImpl();
 		carService.deleteCar(id);
 	}
+
+	@Override
+	public List<Object[]> getCarListCustomer() throws SomethingWentWrongException, NoRecordFoundException {
+		ICarsServiceDAO carService = new CarsServiceDaoImpl();
+		return carService.getCarListCustomer();
+	}
 	
 }

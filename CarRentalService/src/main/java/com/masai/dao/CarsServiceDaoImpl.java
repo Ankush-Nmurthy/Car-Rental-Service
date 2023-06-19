@@ -87,6 +87,27 @@ public class CarsServiceDaoImpl implements ICarsServiceDAO{
 	}
 
 	@Override
+	public List<Object[]> getCarListCustomer() throws SomethingWentWrongException, NoRecordFoundException {
+		EntityManager em = null;
+		List<Object[]> allCars = null;
+		try {
+			em = EMUtilities.getEntityManager();
+//			Query query = em.createQuery("SELECT p.carID,  c.companyName, p.availability, p.mileage, p.manufacturing_year FROM Cars p JOIN CarCompany c ON p.company = c");
+			Query query = em.createQuery ("SELECT p.carId,p.model,c.companyName, p.availability, p.mileage, p.year FROM Cars p JOIN CarCompany c ON p.carCompany = c where p.availability = true");
+			allCars = (List<Object[]>)query.getResultList();
+			if(allCars.size() == 0) {
+				throw new NoRecordFoundException("No plan Found"); 
+			}
+		}catch(IllegalArgumentException ex) {
+			ex.printStackTrace();
+			throw new NoRecordFoundException("unable to process the request..");
+		}
+		finally {
+			em.close();
+		}
+		return allCars;
+	}
+	@Override
 	public Cars getCar(int id) throws SomethingWentWrongException, NoRecordFoundException {
 		Cars car = null;
 		try(EntityManager em = EMUtilities.getEntityManager()){
