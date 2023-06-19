@@ -10,8 +10,10 @@ import com.masai.entity.Cars;
 import com.masai.entity.Customer;
 import com.masai.exception.NoRecordFoundException;
 import com.masai.exception.SomethingWentWrongException;
+import com.masai.service.BookingServiceImp;
 import com.masai.service.CarServiceImpl;
 import com.masai.service.CustomerServiceImpl;
+import com.masai.service.IBookingService;
 import com.masai.service.ICarService;
 import com.masai.service.ICustomerService;
 import jakarta.persistence.EntityManager;
@@ -48,9 +50,9 @@ public class CustomerUI {
 		System.out.println("3. Search cars");
 		System.out.println("4. Book Car");
 		System.out.println("5. DeleteBooking");
-		System.out.println("6. Modify the existing booking");
-		System.out.println("7. View all transaction ");
-		System.out.println("8. Delete account.");
+//		System.out.println("6. Modify the existing booking");
+		System.out.println("6. View all transaction ");
+		System.out.println("7. Delete account.");
 		System.out.println("0. LogOut");
 	}
 
@@ -283,23 +285,59 @@ public class CustomerUI {
 //		int payment, String modeofPayment,Cars car,String location,LocalDate startDate, LocalDate EndDate
 
 		ICarService ics = new CarServiceImpl();
-		IBooking booking = new BookingsImpl();
+//		IBooking booking = new BookingsImpl();
+		IBookingService booking = new BookingServiceImp();
 		try {
 			Cars car = ics.getCar(id);
-			booking.BookCar(0, "online", car, location, date1, date2);
+			booking.BookCar(0, "online", car, location, date1, date2, sc);
 		} catch (SomethingWentWrongException | NoRecordFoundException e) {
 			System.out.println("Unable to process your request.");
 		}
 	}
 
 	public static void deleteBooking(Scanner sc) {
-		
+		System.out.print("Enter booking id you wish to cancel : ");
+		int id = sc.nextInt();
+		IBookingService booking = new BookingServiceImp();
+		try {
+			booking.deleteBookings(id);
+			System.out.println("Booking got successfully amount will be credited with in 24hrs");
+		} catch (NoRecordFoundException | SomethingWentWrongException e) {
+			System.out.println(e.getMessage());
+		}
 	}
-	
+
 	public static void viewAllTransactions() {
-		
+		IBooking b = new BookingsImpl();
+		try {
+			List<Object[]> clist = b.getCustomerBooking();
+			for (Object[] a : clist) {
+//				ct.car_model, c.location, b.id, b.status, t.totalAmount, t.transactiondata, t.modeofTransactoion
+				System.out.println("Car_model : " + a[0] + ", Booked_Location : " + a[1] + ", Booking Id : " + a[2]
+						+ ", Booking_status : " + a[3] + ", Total_Booking_amount : " + a[4] + ", Transaction_date : "
+						+ a[5] + ", mode_of_Transactoion : " + a[6]);
+			}
+		} catch (SomethingWentWrongException | NoRecordFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
+	public static void viewAllCars() {
+		ICarService ics = new CarServiceImpl();
+		try {
+			List<Object[]> carlist = ics.getCarListCustomer();
+			for (Object[] a : carlist) {
+				System.out.println(
+						"Car-ID : " + a[0] + ", Car-Model : " + a[1] + ", Car-Company : " + a[2] + ", car-Availibity : "
+								+ a[3] + ", car-mileage : " + a[4] + ", car-Manufacturung Year : " + a[5]);
+			}
+			System.out.println();
+		}catch (SomethingWentWrongException| NoRecordFoundException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	public static void userMenu(Scanner sc) {
 		int choice = 0;
 		do {
@@ -308,7 +346,7 @@ public class CustomerUI {
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
-				AdminUI.viewAllCars();
+				viewAllCars();
 				break;
 			case 2:
 				AdminUI.viewSingleCar(sc);
@@ -322,13 +360,13 @@ public class CustomerUI {
 			case 5:
 				deleteBooking(sc);
 				break;
+//			case 6:
+////				modifyBooking(sc);
+//				break;
 			case 6:
-//				modifyBooking(sc);
-				break;
-			case 7:
 				viewAllTransactions();
 				break;
-			case 8:
+			case 7:
 				deleteAccount(sc);
 				break;
 			case 0:

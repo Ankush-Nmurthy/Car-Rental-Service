@@ -20,6 +20,8 @@ public class Transaction {
 	@OneToOne
 	@JoinColumn(name = "booking_id", nullable = false)
 	private Bookings bookings;
+	
+	private String modeofTransactoion;
 
 	public Transaction() {
 		super();
@@ -62,6 +64,14 @@ public class Transaction {
 
 	public void setBookings(Bookings bookings) {
 		this.bookings = bookings;
+	}
+
+	public String getModeofTransactoion() {
+		return modeofTransactoion;
+	}
+
+	public void setModeofTransactoion(String modeofTransactoion) {
+		this.modeofTransactoion = modeofTransactoion;
 	}
 
 }

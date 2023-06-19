@@ -16,4 +16,5 @@ public interface ICarService {
 	public void addCompany(CarCompany cc) throws SomethingWentWrongException ;
 	public CarCompany getCarCompany(String name) throws SomethingWentWrongException, NoRecordFoundException;
 	public void deleteCar(int id) throws SomethingWentWrongException, NoRecordFoundException;
+	public List<Object[]> getCarListCustomer() throws SomethingWentWrongException, NoRecordFoundException;
 }

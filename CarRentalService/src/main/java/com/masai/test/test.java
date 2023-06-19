@@ -3,6 +3,8 @@ package com.masai.test;
 import java.util.Scanner;
 
 import com.masai.dao.CarsServiceDaoImpl;
+import com.masai.exception.NoRecordFoundException;
+import com.masai.exception.SomethingWentWrongException;
 import com.masai.ui.AdminUI;
 import com.masai.ui.CustomerUI;
 
@@ -95,7 +97,17 @@ public class test {
 //		============================
 //		CustomerUI.searchByBrand(sc);
 //		===============================
-		CustomerUI.SearchByLocation(sc);
+//		CustomerUI.SearchByLocation(sc);
+//		=================
+		try {
+			System.out.println(csr.getCarListCustomer());
+		} catch (SomethingWentWrongException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoRecordFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }

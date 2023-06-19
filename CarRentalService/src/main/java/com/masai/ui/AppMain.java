@@ -11,7 +11,6 @@ public class AppMain {
 		System.out.println("4. Delete car ");
 		System.out.println("5. view single car details");
 		System.out.println("6. Generate Report and Analytics ");
-		System.out.println("7. ");
 		System.out.println("0. Logout");
 	}
 	
@@ -38,9 +37,7 @@ public class AppMain {
 				AdminUI.viewSingleCar(sc);
 				break;
 			case 6:
-//				generateReport(sc);
-				break;
-			case 7:
+				AdminUI.generateReport(sc);
 				break;
 			case 0:
 				System.out.println("admin loged out successfully..");
