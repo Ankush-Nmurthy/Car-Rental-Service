@@ -42,6 +42,27 @@ The GrowGarden Application is a web-based platform designed to facilitate the pu
     - Monitor customer orders and order history.
     - Handle customer inquiries and support.
 
+## FOLDER STRUCTURE
+```
+project-root
+│
+├── src
+│   └── main
+│       ├── java
+│       │   └── com
+│       │       └── masai
+│       │           ├── dao
+│       │           ├── entity
+│       │           ├── exception
+│       │           ├── service
+│       │           ├── test (This class is simple to test the code)
+│       │           └── ui
+│       └── resources
+│           └── META-INF
+│               └── persistence
+└── pom.xml
+```
+
 
 ## Tech-Stacks:
     - Frontend: HTML, CSS, JavaScript.
