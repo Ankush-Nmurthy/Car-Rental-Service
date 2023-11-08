@@ -1,46 +1,27 @@
-# CAR RENTAL SERVICE
+# CAR RENTAL SERVICES
+<img src="https://i.ibb.co/1sJSkb7/Car-Rental-Services-2.jpg" alt="Car-Rental-Services-2" width="320px" height="300px">
 
 ## Introduction
-
-The GrowGarden Application is a web-based platform designed to facilitate the purchase and management of a wide variety of plants, seeds, and planters. The application provides customers with an intuitive and user-friendly interface to browse through the available products, place orders, and manage their purchases. Additionally, the admin endpoints empowers administrators to efficiently manage products, customers, and overall operations.
+The CAR-RENTAL-SERVICES is a console-based project that simplifies car rental operations for administrators and customers. Administrators can manage cars and generate reports, while customers can register, browse cars, and book rentals. Overall, it enhances efficiency and convenience in the car rental process.
 
 ## Key Features:
 
-### For Customers:
+- ### Customers operations:
+   - **Register customer account:** Customers can create their accounts to access the car rental service and enjoy personalized features.
+   - **View all available cars:** Customers can browse through a list of cars that are available for rent.
+   - **Search cars:** Customers can search for specific cars based on their preferences, such as model, brand, or price range.
+   - **Book cars:** Customers can reserve a car for a specific date and time, ensuring its availability for their desired rental period.
+   - **Delete booking:** Customers have the option to cancel a booking if their plans change or if they no longer require the rental.
+   - **View all bookings and transactions:** Customers can view a comprehensive list of their past and current bookings, as well as their transaction history.
+   - **Delete account:** Customers can choose to delete their account if they no longer wish to use the car rental service.
 
-1. **Product Listing:** Customers can view a comprehensive list of available plants, seeds, and planters. Each product listing includes images, descriptions, prices, and other relevant details.
+- ### Admin operations:
 
-2. **Product Categories:** Products are categorized into plants, seeds, and planters, making it easy for customers to navigate and find what they are looking for.
-
-3. **Search and Filters:** Customers can use search functionality and filters to quickly locate specific products based on criteria like plant type, size, flowering season, etc.
-
-4. **Shopping Cart:** Customers can add multiple items to their shopping cart, review the cart, modify quantities, and proceed to checkout.
-   
-5. **Order Placement:** Customers can place orders for selected items, choose shipping options, and provide delivery details.
-
-6. **User Accounts:** Customers can create accounts to save their preferences, view order history, and track the status of their current orders.
-
-### For Admin:
-
-1. **Plants Management:**
-    - Add new plant products with details (name, description, price, image, etc.).
-    - Update or delete existing plant products.
-    - Manage plant categories and attributes.
-
-2. **Seeds Management:**
-    - Add new seed products with details.
-    - Edit or remove existing seed products.
-    - Organize seeds by categories and attributes.
-
-3. **Planters Management:**
-    - Add new planter products with relevant information.
-    - Modify or delete existing planter products.
-    - Categorize planters based on type, size, material, etc.
-
-4. **Customer Management:**
-    - View and manage customer accounts.
-    - Monitor customer orders and order history.
-    - Handle customer inquiries and support.
+   - **Add cars:** Administrators have the ability to add new cars to the system, including their details such as model, brand, and availability.
+   - **View cars:** Administrators can access a list of all cars in the system, allowing them to review and update the car information as needed.
+   - **Delete cars:** Administrators can remove cars from the system if they are no longer available for rent or if they need to be removed for other reasons.
+   - **Generate reports:** Administrators can generate detailed reports that provide insights into car-related activities, such as bookings, rentals, and revenue.
+   - **View customer details:** Administrators can access customer information, including registration details and transaction history.
 
 ## FOLDER STRUCTURE
 ```
@@ -65,10 +46,9 @@ project-root
 
 
 ## Tech-Stacks:
-    - Frontend: HTML, CSS, JavaScript.
-    - Backend: Java, Spring-Boot, Spring-Data-JPA
+    - Backend: Java, Hibernate etc 
     - Database: MYSQL.
-    - User Authentication: JWT (JSON Web Tokens)
+    - Build tool: Maven.
 
 ## Database
 <img src="https://i.ibb.co/FBVPhpz/Untitled-2.png" alt="Untitled-2" border="0">
@@ -76,38 +56,29 @@ project-root
 
 ## Project Configuration
 
-The project uses the following configuration for the Spring Boot application:
+The project uses the following configuration:
 
 ```properties
-server.port = 5050
-#To configuer your own server port please follow the path provided below and change the server.port value;
-#Grow-Garden/src/main/resources/application.properties
+<property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/**[your database name]**" /> 
+<property name="jakarta.persistence.jdbc.user" value="**[Inside here enter your SQL username]**" /> 
+<property name="jakarta.persistence.jdbc.password" value="**[Inside here enter your SQL password]**" />
 
+<!-- this will show the queries on console -->
+<property name="hibernate.show_sql" value="true" />
 
-spring.datasource.driver=com.mysql.cj.jdbc.Driver
-spring.datasource.url=jdbc:mysql://localhost:3306/growgarden
-spring.datasource.username= Your Username
-spring.datasource.password= Your Password
-
-spring.jpa.hibernate.ddl-auto=update
-
+<!-- <property name="hibernate.show_sql" value="true"/> -->
+<property name="hibernate.hbm2ddl.auto" value="update" />
 ```
 ## Setup
 
 To run the application, follow these steps:
 
-1. Ensure you have Java and MySQL installed on your system.
-
-2. Set up the database with the provided connection details in the `application.properties`.
-
-3. Run the Spring Boot application.
-
-4. Access the application using the specified port (e.g., http://localhost:5050).
-
-## Future implementation:
-1. We are also planing to implement Payment Gateway for this application.
-2. And also an user friendly user interface.
+1. Clone the remote `Repository` to the local system.
+2. Ensure you have Java and MySQL installed on your system.
+3. Import the project to the editor.
+4. Run the project and use the application on editor console.
 
 ## Conclusion:
-The Online Plant Nursery Application brings together plant enthusiasts and sellers, offering a convenient and seamless platform to buy and sell plants, seeds, and planters. With user-friendly interfaces for customers and administrators, the application simplifies product management, order processing, and customer interactions, creating a flourishing online community for gardening enthusiasts.
+CAR RENTAL SERVICES provides convenience for both administrators and customers, allowing administrators to manage cars, generate reports, and view customer details, while customers can register, browse, book, and manage their rentals. This project aims to enhance the overall car rental experience and optimize the management of car-related activities.
     
